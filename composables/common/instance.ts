@@ -13,9 +13,9 @@ export class InstanceClass {
   }
 }
 
-export function useInstance(InstanceClass: new () => InstanceClass) {
+export function useInstance<T>(InstanceClass: new () => T): T {
   if (instanceCache.has(InstanceClass.name)) {
-    return instanceCache.get(InstanceClass.name)!
+    return instanceCache.get(InstanceClass.name) as T
   }
 
   return new InstanceClass()
