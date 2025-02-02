@@ -43,7 +43,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { FoodBase } from '~/composables/food/baseClass'
+import type { FoodBase } from '~/composables/food/foodBaseClass'
 
 const props = defineProps<{
   food: new () => FoodBase

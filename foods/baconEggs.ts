@@ -1,5 +1,5 @@
 import icon from '~/assets/images/foods/bacon-eggs.png'
-import { FoodBase } from '~/composables/food/baseClass'
+import { FoodBase } from '~/composables/food/foodBaseClass'
 
 export default class BaconEggs extends FoodBase {
   _name = '培根煎蛋'
