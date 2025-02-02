@@ -1,6 +1,4 @@
-const foodBaseCache = new Map<string, FoodBase>()
-
-export abstract class FoodBase {
+export abstract class FoodBase extends InstanceClass {
   protected abstract _name: string
   protected abstract _health: number
   protected abstract _hunger: number
@@ -9,15 +7,6 @@ export abstract class FoodBase {
   protected abstract _cooking: number
   protected abstract _priority: number
   protected abstract _image: string
-
-  constructor() {
-    const className = this.constructor.name
-    const existingInstance = foodBaseCache.get(className)
-    if (existingInstance) {
-      return existingInstance as this
-    }
-    foodBaseCache.set(className, this)
-  }
 
   get name() {
     return this._name
@@ -57,9 +46,5 @@ export abstract class FoodBase {
 }
 
 export function useFood(FoodBaseClass: new () => FoodBase) {
-  if (foodBaseCache.has(FoodBaseClass.name)) {
-    return foodBaseCache.get(FoodBaseClass.name)!
-  }
-
-  return new FoodBaseClass()
+  return useInstance(FoodBaseClass)
 }
