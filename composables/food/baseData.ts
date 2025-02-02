@@ -1,4 +1,4 @@
-export interface Food {
+export interface FoodBaseData {
   /**
    * 名称
    */
@@ -22,7 +22,7 @@ export interface Food {
   /**
    * 保质期
    */
-  life: number
+  rot: number
 
   /**
    * 烹饪时长

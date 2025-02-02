@@ -16,10 +16,10 @@ import { presetUseful } from 'unocss-preset-useful'
 
 const themeColors = {
   light: {
-    primary: '#4764cf'
+    primary: '#634931'
   },
   dark: {
-    primary: '#4764cf'
+    primary: '#634931'
   }
 }
 

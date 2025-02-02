@@ -1,19 +1,17 @@
 <template>
-  <div size-screen fccc font-thin>
-    <div w-full flex-1 bg-gray-100>
+  <div size-screen fccc>
+    <div w-full flex-1>
       <div h-full of="x-hidden y-auto">
         <Swiper
-          :modules="[Pagination]"
-          :pagination="{
+          :modules="[Pagination]" :pagination="{
             clickable: true
-          }"
-          h-full
+          }" bg="#f9f9f9" h-full max-w-xl w-full
         >
           <SwiperSlide>
-            1
+            <RecipeItem :food="BaconEggs" />
           </SwiperSlide>
           <SwiperSlide>
-            2
+            <RecipeItem :food="BaconEggs" />
           </SwiperSlide>
         </Swiper>
       </div>
@@ -21,10 +19,8 @@
 
     <div h-24 w-full fcc px-4 b="none t solid gray-200">
       <input
-        type="text"
-        placeholder="请输入关键字"
-        b="~ solid gray"
-        h-12 max-w-xl w-full rounded-full text-center outline-none
+        type="text" placeholder="请输入关键字" b="~ solid gray" h-12 max-w-xl w-full rounded-full text-center
+        outline-none
       >
     </div>
   </div>
@@ -33,6 +29,8 @@
 <script lang="ts" setup>
 import { Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/vue'
+
+import BaconEggs from '~/foods/baconEggs'
 
 import 'swiper/css'
 import 'swiper/css/pagination'
