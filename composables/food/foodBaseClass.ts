@@ -1,3 +1,7 @@
+import type { ComparisonOperator } from '~/types/comparisonOperator'
+import type { ConditionResult } from '~/types/condition'
+import type { IngredientsCondition } from '~/types/ingredientsCondition'
+
 export abstract class FoodBase extends InstanceClass {
   protected abstract _name: string
   protected abstract _health: number
@@ -7,6 +11,85 @@ export abstract class FoodBase extends InstanceClass {
   protected abstract _cooking: number
   protected abstract _priority: number
   protected abstract _image: string
+
+  /**
+   * 所需食材
+   */
+  protected _ingredientsCondition: IngredientsCondition[] = []
+
+  /**
+   * 所需肉度
+   */
+  protected _meat?: ComparisonOperator
+
+  /**
+   * 所需怪物度
+   */
+  protected _monster?: ComparisonOperator
+
+  /**
+   * 所需鱼度
+   */
+  protected _fish?: ComparisonOperator
+
+  /**
+   * 所需水果度
+   */
+  protected _fruit?: ComparisonOperator
+
+  /**
+   * 所需蔬菜度
+   */
+  protected _vegetable?: ComparisonOperator
+
+  /**
+   * 所需蛋度
+   */
+  protected _egg?: ComparisonOperator
+
+  /**
+   * 所需甜味剂度
+   */
+  protected _sweetener?: ComparisonOperator
+
+  /**
+   * 所需乳制品度
+   */
+  protected _dairy?: ComparisonOperator
+
+  /**
+   * 所需冰度
+   */
+  protected _ice?: ComparisonOperator
+
+  /**
+   * 所需不可食用度
+   */
+  protected _notEdible?: ComparisonOperator
+
+  /**
+   * 所需魔法度
+   */
+  protected _magic?: ComparisonOperator
+
+  /**
+   * 所需油脂度
+   */
+  protected _grease?: ComparisonOperator
+
+  /**
+   * 所需种子度
+   */
+  protected _seed?: ComparisonOperator
+
+  /**
+   * 所需装饰度
+   */
+  protected _decorate?: ComparisonOperator
+
+  get ingredientsCondition() {
+    return this._ingredientsCondition
+  }
 
   get name() {
     return this._name
@@ -38,6 +121,31 @@ export abstract class FoodBase extends InstanceClass {
 
   get image() {
     return this._image
+  }
+
+  get condition() {
+    const result: ConditionResult = {}
+
+      ; ([
+      '_meat',
+      '_monster',
+      '_fish',
+      '_fruit',
+      '_vegetable',
+      '_egg',
+      '_sweetener',
+      '_dairy',
+      '_ice',
+      '_notEdible',
+      '_magic',
+      '_grease'
+    ] as const).forEach((key) => {
+      if (this[key]) {
+        result[key.replace('_', '') as keyof ConditionResult] = this[key]
+      }
+    })
+
+    return result
   }
 
   private toSignedString(num: number) {

@@ -39,6 +39,33 @@
         </div>
       </StatusIconText>
     </div>
+
+    <div fc items-start gap-8>
+      <div fccc gap-4>
+        <div>
+          条件
+        </div>
+
+        <div>
+          <div>{{ foodData.condition }}</div>
+        </div>
+      </div>
+      <div v-show="foodData.ingredientsCondition.length > 0" fccc gap-4>
+        <div>
+          必须食材
+        </div>
+        <div v-for="(ingredientCondition, index) in requireIngredients" :key="index" fccc gap-4>
+          <div v-for="(ingredient, index) in ingredientCondition.ingredients" :key="index" fcc gap-2>
+            <div size-8>
+              <InventorySlot :icon="ingredient.image" />
+            </div>
+            <div text="3.5 gray">
+              {{ ingredient.name }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -50,6 +77,19 @@ const props = defineProps<{
 }>()
 
 const foodData = useFood(props.food)
+
+const requireIngredients = computed(() => {
+  return foodData.ingredientsCondition.map((ingredientCondition) => {
+    const ingredients = ingredientCondition.ingredients.map((ingredient) => {
+      return useIngredientsBase(ingredient)
+    })
+
+    return {
+      ingredients,
+      condition: ingredientCondition.condition
+    }
+  })
+})
 
 const {
   healthMeter,

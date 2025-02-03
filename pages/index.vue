@@ -11,7 +11,7 @@
             <RecipeItem :food="BaconEggs" />
           </SwiperSlide>
           <SwiperSlide>
-            <RecipeItem :food="BaconEggs" />
+            <RecipeItem :food="ButterMuffin" />
           </SwiperSlide>
         </Swiper>
       </div>
@@ -31,6 +31,7 @@ import { Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 
 import BaconEggs from '~/foods/baconEggs'
+import ButterMuffin from '~/foods/butterMuffin'
 
 import 'swiper/css'
 import 'swiper/css/pagination'

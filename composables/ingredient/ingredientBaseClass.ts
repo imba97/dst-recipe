@@ -1,4 +1,6 @@
 export abstract class IngredientBase extends InstanceClass {
+  protected abstract _name: string
+
   /**
    * 肉度
    */
@@ -73,6 +75,13 @@ export abstract class IngredientBase extends InstanceClass {
    * 图片
    */
   protected abstract _image: string
+
+  /**
+   * 名称
+   */
+  get name() {
+    return this._name
+  }
 
   /**
    * 肉度
