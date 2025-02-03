@@ -5,11 +5,6 @@ export interface ComparisonOperator {
   eq?: number
 
   /**
-   * 不等于
-   */
-  ne?: number
-
-  /**
    * 大于
    */
   gt?: number
