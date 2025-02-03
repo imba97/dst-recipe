@@ -1,4 +1,4 @@
-export abstract class IngredientsBase extends InstanceClass {
+export abstract class IngredientBase extends InstanceClass {
   /**
    * 肉度
    */
@@ -58,6 +58,16 @@ export abstract class IngredientsBase extends InstanceClass {
    * 油脂度
    */
   protected _grease?: number
+
+  /**
+   * 种子度
+   */
+  protected _seed?: number
+
+  /**
+   * 装饰度
+   */
+  protected _decorate?: number
 
   /**
    * 图片
@@ -142,6 +152,20 @@ export abstract class IngredientsBase extends InstanceClass {
   }
 
   /**
+   * 种子度
+   */
+  get seed() {
+    return this._seed || 0
+  }
+
+  /**
+   * 装饰度
+   */
+  get decorate() {
+    return this._decorate || 0
+  }
+
+  /**
    * 油脂度
    */
   get grease() {
@@ -156,6 +180,6 @@ export abstract class IngredientsBase extends InstanceClass {
   }
 }
 
-export function useIngredientsBase(FoodBaseClass: new () => IngredientsBase) {
+export function useIngredientsBase(FoodBaseClass: new () => IngredientBase) {
   return useInstance(FoodBaseClass)
 }

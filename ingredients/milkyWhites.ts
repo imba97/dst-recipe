@@ -1,7 +1,7 @@
 import icon from '~/assets/images/ingredients/milky-whites.png'
-import { IngredientsBase } from '~/composables/ingredient/ingredientsBaseClass'
+import { IngredientBase } from '~/composables/ingredient/ingredientBaseClass'
 
-export default class MilkyWhites extends IngredientsBase {
+export default class MilkyWhites extends IngredientBase {
   protected override _dairy = 1
 
   protected _image = icon
