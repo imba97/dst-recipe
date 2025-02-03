@@ -1,20 +1,24 @@
 <template>
   <div size-screen fccc>
-    <div w-full flex-1>
-      <div h-full of="x-hidden y-auto">
+    <div w-full>
+      <div of="x-hidden y-auto">
         <Swiper
           :modules="[Pagination]" :pagination="{
             clickable: true
           }" bg="#f9f9f9" h-full max-w-xl w-full
+          @active-index-change="activeIndexChange"
         >
-          <SwiperSlide>
-            <RecipeItem :food="BaconEggs" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <RecipeItem :food="ButterMuffin" />
+          <SwiperSlide v-for="(recipe, index) in recipeList" :key="index">
+            <RecipeItem :food="recipe" />
           </SwiperSlide>
         </Swiper>
       </div>
+    </div>
+
+    <div bg="#f9f9f9" h-full max-w-xl w-full flex-1>
+      <template v-if="recipeStore.current">
+        <RecipeDetail />
+      </template>
     </div>
 
     <div h-24 w-full fcc px-4 b="none t solid gray-200">
@@ -28,11 +32,26 @@
 
 <script lang="ts" setup>
 import { Pagination } from 'swiper/modules'
+
 import { Swiper, SwiperSlide } from 'swiper/vue'
-
 import BaconEggs from '~/foods/baconEggs'
-import ButterMuffin from '~/foods/butterMuffin'
 
+import ButterMuffin from '~/foods/butterMuffin'
 import 'swiper/css'
 import 'swiper/css/pagination'
+
+const recipeStore = useRecipe()
+
+const recipeList: FoodBaseConstructor[] = [
+  BaconEggs,
+  ButterMuffin
+]
+
+onMounted(() => {
+  recipeStore.current = recipeList[0]
+})
+
+function activeIndexChange(swiper: { activeIndex: number }) {
+  recipeStore.current = recipeList[swiper.activeIndex]
+}
 </script>
