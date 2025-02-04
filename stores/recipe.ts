@@ -1,7 +1,10 @@
+import type { FoodBase } from '~/composables/food/foodBaseClass'
+import { defineStore } from 'pinia'
+
 export const useRecipe = defineStore('recipe', {
   state: () => ({
-    current: null as unknown as FoodBaseConstructor
+    current: null
   }) as {
-    current: FoodBaseConstructor
+    current: FoodBase | null
   }
 })

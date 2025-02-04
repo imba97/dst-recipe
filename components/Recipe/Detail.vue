@@ -40,7 +40,7 @@
 <script lang="ts" setup>
 const repiceStore = useRecipe()
 
-const foodData = computed(() => useFood(repiceStore.current))
+const foodData = computed(() => repiceStore.current!)
 
 const requireIngredients = computed(() => {
   return foodData.value.ingredientsCondition.map((ingredientCondition) => {

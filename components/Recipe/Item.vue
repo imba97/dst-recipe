@@ -43,11 +43,9 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{
-  food: FoodBaseConstructor
-}>()
+const recipeStore = useRecipe()
 
-const foodData = useFood(props.food)
+const foodData = computed(() => recipeStore.current!)
 
 const {
   healthMeter,
