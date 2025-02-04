@@ -58,7 +58,8 @@ const recipeStore = useRecipe()
 const recipeList = ref<FoodBase[]>([])
 
 const fuse = new Fuse(foods, {
-  keys: ['pinyin.name', 'pinyin.initials']
+  keys: ['pinyin.name', 'pinyin.initials'],
+  threshold: 0.1
 })
 
 watch(searchValue, () => {
