@@ -29,10 +29,8 @@
 
     <div h-24 w-full fcc px-4 b="none t solid gray-200">
       <input
-        ref="search-input"
-        v-model="searchValue"
-        type="text" placeholder="请输入关键字" b="~ solid gray"
-        h-12 max-w-xl w-full shrink-0 rounded-full text-center outline-none
+        ref="search-input" v-model="searchValue" type="text" placeholder="请输入关键字" b="~ solid gray" h-12 max-w-xl
+        w-full shrink-0 rounded-full text-center outline-none
       >
     </div>
   </div>
@@ -63,6 +61,12 @@ const fuse = new Fuse(foods, {
 })
 
 watch(searchValue, () => {
+  if (searchValue.value.length < 2) {
+    recipeStore.current = null
+    recipeList.value = []
+    return
+  }
+
   search(searchValue.value)
 })
 
