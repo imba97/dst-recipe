@@ -1,6 +1,6 @@
 <template>
   <div fccc gap-8 py-4>
-    <div v-show="foodData.ingredientsCondition.length > 0" w-full fccc gap-4>
+    <div v-show="requireIngredients.length > 0" w-full fccc gap-4>
       <div>
         必须食材
       </div>
@@ -23,7 +23,7 @@
         </div>
       </div>
     </div>
-    <div w-full fccc gap-4 px-4>
+    <div v-show="parsedConditions.length > 0" w-full fccc gap-4 px-4>
       <div>
         条件
       </div>
