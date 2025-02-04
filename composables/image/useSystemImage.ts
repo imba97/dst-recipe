@@ -8,6 +8,7 @@ import sanityMeter from '~/assets/images/status/sanity-meter.png'
 // 烹饪相关
 import rot from '~/assets/images/status/rot.png'
 import crockPot from '~/assets/images/status/crock-pot.png'
+import portableCrockPot from '~/assets/images/status/portable-crock-pot.png'
 
 // 物品栏背景
 import inventorySlotBackground from '~/assets/images/status/inventory-slot-background.png'
@@ -20,6 +21,7 @@ export function useSystemImage() {
 
     rot,
     crockPot,
+    portableCrockPot,
 
     inventorySlotBackground
   }

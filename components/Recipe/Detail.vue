@@ -6,7 +6,10 @@
       </div>
       <div v-for="(ingredientCondition, index) in requireIngredients" :key="index" w-full fbc gap-4 px-4>
         <div fyc flex-1 flex-wrap gap-4>
-          <div v-for="(ingredient, ingredientIndex) in ingredientCondition.ingredients" :key="ingredientIndex" fcc gap-2>
+          <div
+            v-for="(ingredient, ingredientIndex) in ingredientCondition.ingredients" :key="ingredientIndex" fcc
+            gap-2
+          >
             <div size-8>
               <InventorySlot :icon="ingredient.image" />
             </div>
@@ -43,11 +46,21 @@
         </div>
       </div>
     </div>
+
+    <div v-show="foodData.warlyOnly" w-full fbc gap-4 px-4>
+      <div>
+        <img :src="portableCrockPot" size-8>
+      </div>
+      <div text="4 primary">
+        仅限沃利制作
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 const repiceStore = useRecipe()
+const { portableCrockPot } = useSystemImage()
 
 const foodData = computed(() => repiceStore.current!)
 

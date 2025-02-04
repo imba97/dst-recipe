@@ -27,6 +27,11 @@ export abstract class FoodBase extends InstanceClass {
   protected _ingredientsCondition: IngredientsCondition[] = []
 
   /**
+   * 仅限沃利
+   */
+  protected _warlyOnly: boolean = false
+
+  /**
    * 所需肉度
    */
   protected _meat?: ComparisonOperator
@@ -103,8 +108,18 @@ export abstract class FoodBase extends InstanceClass {
     return this._merge
   }
 
+  /**
+   * 所需食材
+   */
   get ingredientsCondition() {
     return this._ingredientsCondition
+  }
+
+  /**
+   * 仅限沃利
+   */
+  get warlyOnly() {
+    return this._warlyOnly
   }
 
   set pinyin(value: { name: string, initials: string }) {
@@ -112,6 +127,9 @@ export abstract class FoodBase extends InstanceClass {
     this._pinyinInitials = value.initials
   }
 
+  /**
+   * 拼音名称
+   */
   get pinyin() {
     return {
       name: this._pinyin,
