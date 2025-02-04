@@ -1,16 +1,6 @@
 import type { ComparisonOperator } from './comparisonOperator'
+import type { IngredientType } from '~/enums/ingredientType'
 
-export interface ConditionResult {
-  meat?: ComparisonOperator
-  monster?: ComparisonOperator
-  fish?: ComparisonOperator
-  fruit?: ComparisonOperator
-  vegetable?: ComparisonOperator
-  egg?: ComparisonOperator
-  sweetener?: ComparisonOperator
-  dairy?: ComparisonOperator
-  ice?: ComparisonOperator
-  notEdible?: ComparisonOperator
-  magic?: ComparisonOperator
-  grease?: ComparisonOperator
+export type ConditionResult = {
+  [key in typeof IngredientType[number]]?: ComparisonOperator
 }

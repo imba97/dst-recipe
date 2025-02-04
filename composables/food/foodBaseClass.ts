@@ -1,6 +1,7 @@
 import type { ComparisonOperator } from '~/types/comparisonOperator'
 import type { ConditionResult } from '~/types/condition'
 import type { IngredientsCondition } from '~/types/ingredientsCondition'
+import { IngredientType } from '~/enums/ingredientType'
 
 export abstract class FoodBase extends InstanceClass {
   protected abstract _name: string
@@ -126,22 +127,9 @@ export abstract class FoodBase extends InstanceClass {
   get condition() {
     const result: ConditionResult = {}
 
-      ; ([
-      '_meat',
-      '_monster',
-      '_fish',
-      '_fruit',
-      '_vegetable',
-      '_egg',
-      '_sweetener',
-      '_dairy',
-      '_ice',
-      '_notEdible',
-      '_magic',
-      '_grease'
-    ] as const).forEach((key) => {
-      if (this[key]) {
-        result[key.replace('_', '') as keyof ConditionResult] = this[key]
+    IngredientType.forEach((key) => {
+      if (this[`_${key}`]) {
+        result[key] = this[`_${key}`] as ComparisonOperator
       }
     })
 
