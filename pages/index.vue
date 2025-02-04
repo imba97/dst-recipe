@@ -1,6 +1,6 @@
 <template>
   <div size-screen fccc>
-    <div bg="#f9f9f9" h-full max-w-xl w-full flex-1>
+    <div bg="#f9f9f9" max-w-xl w-full flex-1>
       <template v-if="recipeStore.current">
         <RecipeDetail />
       </template>

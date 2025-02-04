@@ -23,13 +23,15 @@
         </div>
       </div>
     </div>
-    <div fccc gap-4>
+    <div w-full fccc gap-4 px-4>
       <div>
         条件
       </div>
 
-      <div>
-        <div>{{ foodData.condition }}</div>
+      <div w-full>
+        <div v-for="item in parsedConditions" :key="item.type">
+          <IngredientProperty :type="item.type" :conditions="item.conditions" />
+        </div>
       </div>
     </div>
   </div>
@@ -52,4 +54,6 @@ const requireIngredients = computed(() => {
     }
   })
 })
+
+const parsedConditions = computed(() => parseCondictions(foodData.value.condition))
 </script>

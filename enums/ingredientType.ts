@@ -15,4 +15,6 @@ export const IngredientType = [
   'decorate'
 ] as const
 
+export type IngredientTypeKey = typeof IngredientType[number]
+
 export const IngredientProperty = IngredientType.map(type => `_${type}` as const)
