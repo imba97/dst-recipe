@@ -1,5 +1,11 @@
 <template>
   <div size-screen fccc>
+    <div bg="#f9f9f9" h-full max-w-xl w-full flex-1>
+      <template v-if="recipeStore.current">
+        <RecipeDetail />
+      </template>
+    </div>
+
     <div w-full>
       <div of="x-hidden y-auto">
         <Swiper
@@ -13,12 +19,6 @@
           </SwiperSlide>
         </Swiper>
       </div>
-    </div>
-
-    <div bg="#f9f9f9" h-full max-w-xl w-full flex-1>
-      <template v-if="recipeStore.current">
-        <RecipeDetail />
-      </template>
     </div>
 
     <div h-24 w-full fcc px-4 b="none t solid gray-200">
