@@ -1,7 +1,7 @@
 import type { ComparisonOperator } from '~/types/comparisonOperator'
 import type { ConditionResult } from '~/types/condition'
 import type { IngredientsCondition } from '~/types/ingredientsCondition'
-import { IngredientType } from '~/enums/ingredientType'
+import { IngredientType, type IngredientTypeKey } from '~/enums/ingredientType'
 
 export abstract class FoodBase extends InstanceClass {
   private _pinyin: string = ''
@@ -15,6 +15,11 @@ export abstract class FoodBase extends InstanceClass {
   protected abstract _cooking: number
   protected abstract _priority: number
   protected abstract _image: string
+
+  /**
+   * 合并条件
+   */
+  protected _merge: IngredientTypeKey[][] = []
 
   /**
    * 所需食材
@@ -90,6 +95,13 @@ export abstract class FoodBase extends InstanceClass {
    * 所需装饰度
    */
   protected _decorate?: ComparisonOperator
+
+  /**
+   * 合并条件
+   */
+  get merge() {
+    return this._merge
+  }
 
   get ingredientsCondition() {
     return this._ingredientsCondition

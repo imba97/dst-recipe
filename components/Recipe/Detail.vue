@@ -23,14 +23,23 @@
         </div>
       </div>
     </div>
-    <div v-show="parsedConditions.length > 0" w-full fccc gap-4 px-4>
+    <div v-show="allConditions.parsedConditions.length > 0" w-full fccc gap-4 px-4>
       <div>
         条件
       </div>
 
       <div w-full>
-        <div v-for="item in parsedConditions" :key="item.type">
+        <div v-for="item in allConditions.parsedConditions" :key="item.type">
           <IngredientProperty :type="item.type" :conditions="item.conditions" />
+        </div>
+
+        <div v-for="(mergedCondition, index) in allConditions.mergedConditions" :key="index">
+          <div v-for="(item, itemIndex) in mergedCondition" :key="itemIndex">
+            <IngredientProperty :type="item.type" :conditions="item.conditions" />
+            <div v-if="itemIndex !== mergedCondition.length - 1" text="3 gray">
+              OR
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -41,6 +50,8 @@
 const repiceStore = useRecipe()
 
 const foodData = computed(() => repiceStore.current!)
+
+const mergeKeys = computed(() => _flatten(foodData.value.merge))
 
 const requireIngredients = computed(() => {
   return foodData.value.ingredientsCondition.map((ingredientCondition) => {
@@ -55,5 +66,22 @@ const requireIngredients = computed(() => {
   })
 })
 
-const parsedConditions = computed(() => parseCondictions(foodData.value.condition))
+const allConditions = computed(() => {
+  const parsedConditions = parseCondictions(foodData.value.condition)
+
+  const removedConditions = _remove(parsedConditions, (item) => {
+    return _includes(mergeKeys.value, item.type)
+  })
+
+  const mergedConditions = _map(foodData.value.merge, (mergedKey) => {
+    return _map(mergedKey, (key) => {
+      return _find(removedConditions, { type: key })!
+    })
+  })
+
+  return {
+    parsedConditions,
+    mergedConditions
+  }
+})
 </script>
