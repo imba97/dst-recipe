@@ -4,6 +4,9 @@ import type { IngredientsCondition } from '~/types/ingredientsCondition'
 import { IngredientType } from '~/enums/ingredientType'
 
 export abstract class FoodBase extends InstanceClass {
+  private _pinyin: string = ''
+  private _pinyinInitials: string = ''
+
   protected abstract _name: string
   protected abstract _health: number
   protected abstract _hunger: number
@@ -90,6 +93,18 @@ export abstract class FoodBase extends InstanceClass {
 
   get ingredientsCondition() {
     return this._ingredientsCondition
+  }
+
+  set pinyin(value: { name: string, initials: string }) {
+    this._pinyin = value.name
+    this._pinyinInitials = value.initials
+  }
+
+  get pinyin() {
+    return {
+      name: this._pinyin,
+      initials: this._pinyinInitials
+    }
   }
 
   get name() {

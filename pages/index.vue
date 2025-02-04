@@ -39,6 +39,8 @@ import ButterMuffin from '~/foods/butterMuffin'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
+import '~/foods'
+
 const recipeStore = useRecipe()
 
 const recipeList: FoodBaseConstructor[] = [
