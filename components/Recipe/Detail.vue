@@ -1,23 +1,25 @@
 <template>
-  <div fccc gap-8>
-    <div v-show="foodData.ingredientsCondition.length > 0" fccc gap-4>
+  <div fccc gap-8 py-4>
+    <div v-show="foodData.ingredientsCondition.length > 0" w-full fccc gap-4>
       <div>
         必须食材
       </div>
-      <div v-for="(ingredientCondition, index) in requireIngredients" :key="index" fcc gap-4>
-        <div v-for="(ingredient, ingredientIndex) in ingredientCondition.ingredients" :key="ingredientIndex" fcc gap-2>
-          <div size-8>
-            <InventorySlot :icon="ingredient.image" />
+      <div v-for="(ingredientCondition, index) in requireIngredients" :key="index" w-full fbc gap-4 px-4>
+        <div fyc flex-1 flex-wrap gap-4>
+          <div v-for="(ingredient, ingredientIndex) in ingredientCondition.ingredients" :key="ingredientIndex" fcc gap-2>
+            <div size-8>
+              <InventorySlot :icon="ingredient.image" />
+            </div>
+            <div text="3.5 primary">
+              {{ ingredient.name }}
+            </div>
+            <div v-if="ingredientIndex !== ingredientCondition.ingredients.length - 1" text="3 gray">
+              OR
+            </div>
           </div>
-          <div text="3.5 primary">
-            {{ ingredient.name }}
-          </div>
-          <div v-if="ingredientIndex !== ingredientCondition.ingredients.length - 1" text="3 gray">
-            OR
-          </div>
-          <div v-if="ingredientIndex === ingredientCondition.ingredients.length - 1" text="3.5 primary">
-            {{ parseComparisonOperator(ingredientCondition.condition) }}
-          </div>
+        </div>
+        <div text="4 primary">
+          {{ parseComparisonOperator(ingredientCondition.condition) }}
         </div>
       </div>
     </div>
