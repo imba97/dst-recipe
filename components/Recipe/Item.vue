@@ -24,10 +24,17 @@
     <div fcc gap-16>
       <StatusIconText :icon="rot" icon-class="size-10">
         <div fyc gap-1>
-          <div>{{ foodData.rot }}</div>
-          <div text="3.5 gray">
-            d
-          </div>
+          <template v-if="foodData.rot > 0">
+            <div>{{ foodData.rot }}</div>
+            <div text="3.5 gray">
+              d
+            </div>
+          </template>
+          <template v-else>
+            <div>
+              不会腐烂
+            </div>
+          </template>
         </div>
       </StatusIconText>
       <StatusIconText :icon="crockPot" icon-class="size-10">
