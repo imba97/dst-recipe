@@ -7,7 +7,7 @@ import PreparedDragonFruit from '~/ingredients/preparedDragonFruit'
 
 export default class Dragonpie extends FoodBase {
   _name = '火龙果派'
-  _health = 20
+  _health = 40
   _hunger = 75
   _sanity = 5
   _rot = 15
