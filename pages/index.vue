@@ -1,6 +1,6 @@
 <template>
   <div size-screen fccc>
-    <div bg="#f9f9f9" max-w-xl w-full flex-1>
+    <div bg="#f9f9f9" max-w-xl w-full flex-1 of-y-auto>
       <template v-if="recipeStore.current">
         <RecipeDetail />
       </template>
@@ -22,8 +22,8 @@
 
     <div h-24 w-full fcc px-4 b="none t solid gray-200">
       <input
-        type="text" placeholder="请输入关键字" b="~ solid gray" h-12 max-w-xl w-full rounded-full text-center
-        outline-none
+        type="text" placeholder="请输入关键字" b="~ solid gray"
+        h-12 max-w-xl w-full shrink-0 rounded-full text-center outline-none
       >
     </div>
   </div>
