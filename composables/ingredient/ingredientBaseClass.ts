@@ -191,6 +191,6 @@ export abstract class IngredientBase extends InstanceClass {
 
 export type IngredientConstructor = new () => IngredientBase
 
-export function useIngredientsBase(FoodBaseClass: new () => IngredientBase) {
+export function useIngredientsBase(FoodBaseClass: IngredientConstructor) {
   return useInstance(FoodBaseClass)
 }
