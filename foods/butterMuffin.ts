@@ -15,7 +15,7 @@ export default class ButterMuffin extends FoodBase {
   _priority = 1
   _image = icon
 
-  protected override _ingredientsCondition: IngredientsCondition[] = [
+  protected override _ingredientsCondition: IngredientsCondition = [
     {
       ingredients: [
         ButterflyWings,

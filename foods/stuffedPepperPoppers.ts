@@ -15,7 +15,7 @@ export default class StuffedPepperPoppers extends FoodBase {
   _priority = 20
   _image = icon
 
-  protected override _ingredientsCondition: IngredientsCondition[] = [
+  protected override _ingredientsCondition: IngredientsCondition = [
     {
       ingredients: [
         Pepper,

@@ -19,7 +19,7 @@ export default class Unagi extends FoodBase {
   _priority = 20
   _image = icon
 
-  protected override _ingredientsCondition: IngredientsCondition[] = [
+  protected override _ingredientsCondition: IngredientsCondition = [
     {
       ingredients: [
         LiveEel,

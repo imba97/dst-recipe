@@ -17,7 +17,7 @@ export default class FishTacos extends FoodBase {
   _priority = 10
   _image = icon
 
-  protected override _ingredientsCondition: IngredientsCondition[] = [
+  protected override _ingredientsCondition: IngredientsCondition = [
     {
       ingredients: [
         Corn,

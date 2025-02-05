@@ -17,7 +17,7 @@ export default class VegetableStinger extends FoodBase {
   _priority = 15
   _image = icon
 
-  protected override _ingredientsCondition: IngredientsCondition[] = [
+  protected override _ingredientsCondition: IngredientsCondition = [
     {
       ingredients: [
         Asparagus,

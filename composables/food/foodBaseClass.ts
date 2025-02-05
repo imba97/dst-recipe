@@ -24,7 +24,7 @@ export abstract class FoodBase extends InstanceClass {
   /**
    * 所需食材
    */
-  protected _ingredientsCondition: IngredientsCondition[] = []
+  protected _ingredientsCondition: IngredientsCondition = []
 
   /**
    * 仅限沃利
