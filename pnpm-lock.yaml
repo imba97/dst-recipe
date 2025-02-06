@@ -17,9 +17,6 @@ importers:
       pinia:
         specifier: ^2.3.1
         version: 2.3.1(typescript@5.7.3)(vue@3.5.13(typescript@5.7.3))
-      pinyin:
-        specifier: 4.0.0-alpha.2
-        version: 4.0.0-alpha.2(segmentit@2.0.3)
       segmentit:
         specifier: ^2.0.3
         version: 2.0.3
@@ -45,6 +42,9 @@ importers:
       '@pinia/nuxt':
         specifier: ^0.9.0
         version: 0.9.0(magicast@0.3.5)(pinia@2.3.1(typescript@5.7.3)(vue@3.5.13(typescript@5.7.3)))(rollup@4.31.0)
+      '@types/fs-extra':
+        specifier: ^11.0.4
+        version: 11.0.4
       '@types/pinyin':
         specifier: ^2.10.2
         version: 2.10.2
@@ -69,15 +69,27 @@ importers:
       bumpp:
         specifier: ^9.10.1
         version: 9.10.1(magicast@0.3.5)
+      consola:
+        specifier: ^3.4.0
+        version: 3.4.0
       eslint:
         specifier: ^9.18.0
         version: 9.18.0(jiti@2.4.2)
+      esno:
+        specifier: ^4.8.0
+        version: 4.8.0
+      fs-extra:
+        specifier: ^11.3.0
+        version: 11.3.0
       lint-staged:
         specifier: ^15.4.1
         version: 15.4.1
       lodash-imports:
         specifier: ^0.0.3
         version: 0.0.3
+      pinyin:
+        specifier: 4.0.0-alpha.2
+        version: 4.0.0-alpha.2(segmentit@2.0.3)
       sass-embedded:
         specifier: ^1.83.4
         version: 1.83.4
@@ -1284,11 +1296,17 @@ packages:
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
 
+  '@types/fs-extra@11.0.4':
+    resolution: {integrity: sha512-yTbItCNreRooED33qjunPthRcSjERP1r4MqCZc7wv0u2sUkzTFp45tgUfS5+r7FrZPdmCCNflLhVSP/o+SemsQ==}
+
   '@types/http-proxy@1.17.15':
     resolution: {integrity: sha512-25g5atgiVNTIv0LBDTg1H74Hvayx0ajtJPLLcYE3whFv75J0pWNtOBzaXJQgDTmrX1bx5U9YC2w/n65BN1HwRQ==}
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
+
+  '@types/jsonfile@6.1.4':
+    resolution: {integrity: sha512-D5qGUYwjvnNNextdU59/+fI+spnwtTFmyQP0h+PfIOSkNfpU6AOICUOkm4i0OnSk+NyjdPJrxCDro0sJsWlRpQ==}
 
   '@types/lodash-es@4.17.12':
     resolution: {integrity: sha512-0NgftHUcV4v34VhXm8QBSftKVXtbkBG3ViCjs6+eJ5a6y6Mi/jiFGPc1sC7QK+9BFhWrURE3EOggmWaSxL9OzQ==}
@@ -2597,6 +2615,10 @@ packages:
     peerDependenciesMeta:
       jiti:
         optional: true
+
+  esno@4.8.0:
+    resolution: {integrity: sha512-acMtooReAQGzLU0zcuEDHa8S62meh5aIyi8jboYxyvAePdmuWx2Mpwmt0xjwO0bs9/SXf+dvXJ0QJoDWw814Iw==}
+    hasBin: true
 
   espree@10.3.0:
     resolution: {integrity: sha512-0QYC8b24HWY8zjRnDTL6RiHfDbAWn63qb4LMj1Z4b076A4une81+z03Kg7l7mn/48PUTqoLptSXez8oknU8Clg==}
@@ -6352,11 +6374,20 @@ snapshots:
 
   '@types/estree@1.0.6': {}
 
+  '@types/fs-extra@11.0.4':
+    dependencies:
+      '@types/jsonfile': 6.1.4
+      '@types/node': 22.10.7
+
   '@types/http-proxy@1.17.15':
     dependencies:
       '@types/node': 22.10.7
 
   '@types/json-schema@7.0.15': {}
+
+  '@types/jsonfile@6.1.4':
+    dependencies:
+      '@types/node': 22.10.7
 
   '@types/lodash-es@4.17.12':
     dependencies:
@@ -8099,6 +8130,10 @@ snapshots:
       jiti: 2.4.2
     transitivePeerDependencies:
       - supports-color
+
+  esno@4.8.0:
+    dependencies:
+      tsx: 4.19.2
 
   espree@10.3.0:
     dependencies:
