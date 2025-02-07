@@ -9,7 +9,8 @@
         <div mx-a max-w-xl w-full of="x-hidden y-auto" b="none t solid gray-200">
           <Swiper
             :modules="[Pagination]" :pagination="{
-              clickable: true
+              clickable: true,
+              dynamicBullets: true
             }" bg="#f9f9f9" h-full @active-index-change="activeIndexChange"
           >
             <SwiperSlide v-for="(recipe, index) in recipeList" :key="index">
